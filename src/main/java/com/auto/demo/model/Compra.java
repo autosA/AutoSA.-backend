@@ -23,7 +23,7 @@ public class Compra {
     private String date;
 
     @Column(name = "monto_total",nullable = false)
-    private double montoNeto;
+    private Double montoNeto;
 
     @ManyToOne
     @JoinColumn(name = "auto_id", nullable = false)
