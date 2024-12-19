@@ -1,30 +1,51 @@
 package com.auto.demo.model;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
 @Data
-@Table( name = "auto")
+@Table( name = "autos")
 public class Auto {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column( nullable = false)
-    private String marca;
+    @Column( name = "marca", nullable = false, length = 50)
+    private String brand;
 
-    @Column
-    private String modelo;
+    @Column(name = "modelo", nullable = false, length = 50)
+    private String model;
 
-    @Column
-    private String año;
+    @Column(name = "precio", nullable = false)
+    private Double price;
+
+    @Column( name = "año")
+    private String year;
+
+    @Column(name = "descripcion", nullable = false, length = 120)
+    private String description;
+
+    @Column(name = "disponibilidad", nullable = false)
+    private Boolean available;
+
+    @OneToMany(mappedBy = "auto")
+    private Set<Compra> compras;
+
+    @ManyToOne
+    @JoinColumn(name = "aministrador_id", nullable = false)
+    private Administrador administrador;
 
     
 
