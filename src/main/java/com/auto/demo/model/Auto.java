@@ -44,7 +44,7 @@ public class Auto {
     private Set<Compra> compras;
 
     @ManyToOne
-    @JoinColumn(name = "aministrador_id", nullable = false)
+    @JoinColumn(name = "administrador_id", nullable = false)
     private Administrador administrador;
 
     
