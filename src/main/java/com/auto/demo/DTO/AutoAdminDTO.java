@@ -11,7 +11,7 @@ public class AutoAdminDTO {
     private Double price;
     private String year;
     private String description;
-    private Double available;
+    private Boolean available;
     private Integer administradorId;
     
 }
