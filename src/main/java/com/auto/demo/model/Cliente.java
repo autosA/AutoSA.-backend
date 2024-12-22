@@ -39,7 +39,7 @@ public class Cliente {
     @Column(name = "name_company", length = 45)
     private String companyName;
 
-    @Column(name = "city", nullable = false, length = 65)
+    @Column(name = "city", nullable = false, length = 20)
     private String city;
 
     @Column(name = "address", nullable = false, length = 125)

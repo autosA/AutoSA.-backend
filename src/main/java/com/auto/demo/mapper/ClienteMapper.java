@@ -30,7 +30,7 @@ public class ClienteMapper {
         cliente.setTelephone(clienteDTO.getTelephone());
         cliente.setCompanyName(clienteDTO.getCompanyName());
         cliente.setCity(clienteDTO.getCity());
-        cliente.setAddress(cliente.getAddress());
+        cliente.setAddress(clienteDTO.getAddress());
         return cliente;
         
     }
