@@ -9,5 +9,5 @@ import com.auto.demo.model.Auto;
 
 @Repository
 public interface AutoRepository extends JpaRepository<Auto, Integer> {
-    List<Auto> findByAdminId(Integer administradorId);
+    List<Auto> findByAdministradorId(Integer administradorId);
 }

@@ -22,7 +22,7 @@ public class AutoServiceImpl implements AutoService {
     @Override
     public List<AutoAdminDTO> getAllAutosForAdmin(Integer id) throws Exception {
         try {
-            List<Auto> autos = autoRepository.findByAdminId(id);
+            List<Auto> autos = autoRepository.findByAdministradorId(id);
             return autos.stream()
                     .map(autoMapper::toAutoAdminDTO)
                     .collect(Collectors.toList());
