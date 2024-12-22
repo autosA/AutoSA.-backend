@@ -1,5 +1,7 @@
 package com.auto.demo.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ public class Compra {
     private Integer id;
 
     @Column(name = "fecha", nullable = false)
-    private String date;
+    private LocalDate date;
 
     @Column(name = "monto_total",nullable = false)
     private Double montoNeto;

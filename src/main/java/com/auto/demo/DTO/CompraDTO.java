@@ -1,6 +1,6 @@
 package com.auto.demo.DTO;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 public class CompraDTO {
     
     private Integer id;
-    private Date date;
+    private LocalDate date;
     private Double montoNeto;
     private Integer autoId;
     private Integer clienteId;
