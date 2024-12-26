@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.auto.demo.DTO.AutoAdminDTO;
+import com.auto.demo.DTO.AutoClienteDTO;
 import com.auto.demo.mapper.AutoMapper;
 import com.auto.demo.model.Auto;
 import com.auto.demo.repository.AutoRepository;
@@ -35,6 +36,18 @@ public class AutoServiceImpl implements AutoService {
     public AutoAdminDTO createAuto(AutoAdminDTO autoCreate) throws Exception {
         Auto auto = autoMapper.toEntity(autoCreate);
         Auto savedAuto = autoRepository.save(auto);
-        return autoMapper.toAutoAdminDTO(savedAuto); 
+        return autoMapper.toAutoAdminDTO(savedAuto);
+    }
+
+    @Override
+    public List<AutoClienteDTO> getAllAutosForCliente() throws Exception {
+        try {
+            List<Auto> autos = autoRepository.findAll();
+            return autos.stream()
+            .map(autoMapper::toAutoClienteDTO)
+            .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new Exception("Error fetching autos: " + e.getMessage());
+        }
     }
 }

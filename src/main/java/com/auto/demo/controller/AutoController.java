@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auto.demo.DTO.AutoAdminDTO;
+import com.auto.demo.DTO.AutoClienteDTO;
 import com.auto.demo.service.AutoService;
 
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,15 @@ public class AutoController {
             return ResponseEntity.ok(autoService.getAllAutosForAdmin(id));
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<AutoClienteDTO>> getAllAutos() {
+        try {
+            return ResponseEntity.ok(autoService.getAllAutosForCliente());
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
