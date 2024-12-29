@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,10 +55,21 @@ public class ClienteController {
     }
 
     @PutMapping("/{clienteId}")
-    public ResponseEntity<ClienteDTO> updateCliente(@PathVariable("clienteId") Integer id, @RequestBody ClienteDTO clienteDTO) {
+    public ResponseEntity<ClienteDTO> updateCliente(@PathVariable("clienteId") Integer id,
+            @RequestBody ClienteDTO clienteDTO) {
         try {
             clienteDTO.setId(id);
             return ResponseEntity.ok(clienteService.updateCliente(clienteDTO));
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/{clienteId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("clienteId") Integer id) {
+        try {
+            clienteService.deleteCliente(id);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
