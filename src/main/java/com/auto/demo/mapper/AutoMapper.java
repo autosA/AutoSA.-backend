@@ -26,10 +26,12 @@ public class AutoMapper {
         autoAdminDTO.setId(auto.getId());
         autoAdminDTO.setBrand(auto.getBrand());
         autoAdminDTO.setModel(auto.getModel());
+        autoAdminDTO.setCategory(auto.getCategory());
         autoAdminDTO.setPrice(auto.getPrice());
         autoAdminDTO.setYear(auto.getYear());
         autoAdminDTO.setDescription(auto.getDescription());
         autoAdminDTO.setAvailable(auto.getAvailable());
+        autoAdminDTO.setImg(auto.getImg());
         if (auto.getAdministrador() != null) {
             autoAdminDTO.setAdministradorId(auto.getAdministrador().getId());
         }
@@ -44,10 +46,12 @@ public class AutoMapper {
         autoClienteDTO.setId(auto.getId());
         autoClienteDTO.setBrand(auto.getBrand());
         autoClienteDTO.setModel(auto.getModel());
+        autoClienteDTO.setCategory(auto.getCategory());
         autoClienteDTO.setPrice(auto.getPrice());
         autoClienteDTO.setYear(auto.getYear());
         autoClienteDTO.setDescription(auto.getDescription());
         autoClienteDTO.setAvailable(auto.getAvailable());
+        autoClienteDTO.setImg(auto.getImg());
         return autoClienteDTO;
     }
 
@@ -59,10 +63,12 @@ public class AutoMapper {
         auto.setId(autoAadminDTO.getId());
         auto.setBrand(autoAadminDTO.getBrand());
         auto.setModel(autoAadminDTO.getModel());
+        auto.setCategory(autoAadminDTO.getCategory());
         auto.setPrice(autoAadminDTO.getPrice());
         auto.setYear(autoAadminDTO.getYear());
         auto.setDescription(autoAadminDTO.getDescription());
         auto.setAvailable(autoAadminDTO.getAvailable());
+        auto.setImg(autoAadminDTO.getImg());
 
         Administrador administrador = administradorRepository.findById(autoAadminDTO.getAdministradorId())
                 .orElseThrow(() -> new Exception("Admin not found with ID: " + autoAadminDTO.getAdministradorId()));

@@ -29,6 +29,9 @@ public class Auto {
     @Column(name = "modelo", nullable = false, length = 50)
     private String model;
 
+    @Column(name = "categoria", nullable = false, length = 50)
+    private String category;
+
     @Column(name = "precio", nullable = false)
     private Double price;
 
@@ -40,6 +43,9 @@ public class Auto {
 
     @Column(name = "disponibilidad", nullable = false)
     private Boolean available;
+
+    @Column(name = "img", nullable = false, length = 120)
+    private String img;
 
     @OneToMany(mappedBy = "auto", cascade = CascadeType.ALL)
     private Set<Compra> compras;
