@@ -12,6 +12,8 @@ public interface AutoService {
 
     public AutoAdminDTO createAuto(AutoAdminDTO autoCreate) throws Exception;
 
+    public void deleteAuto(Integer id) throws Exception;
+
     //clientes
 
     public List<AutoClienteDTO> getAllAutosForCliente() throws Exception;

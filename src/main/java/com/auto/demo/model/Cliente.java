@@ -48,6 +48,4 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL)
     private Set<Compra> compras;
 
-
-
 }

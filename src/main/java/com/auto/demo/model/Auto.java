@@ -2,6 +2,7 @@ package com.auto.demo.model;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,18 +41,11 @@ public class Auto {
     @Column(name = "disponibilidad", nullable = false)
     private Boolean available;
 
-    @OneToMany(mappedBy = "auto")
+    @OneToMany(mappedBy = "auto", cascade = CascadeType.ALL)
     private Set<Compra> compras;
 
     @ManyToOne
     @JoinColumn(name = "administrador_id", nullable = false)
     private Administrador administrador;
-
-    
-
-
-    
-
-
 
 }

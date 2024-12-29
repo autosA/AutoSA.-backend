@@ -50,4 +50,13 @@ public class AutoServiceImpl implements AutoService {
             throw new Exception("Error fetching autos: " + e.getMessage());
         }
     }
+
+    @Override
+    public void deleteAuto(Integer id) throws Exception {
+        if (!autoRepository.existsById(id)) {
+            throw new Exception("El auto no existe");
+        }
+        autoRepository.deleteById(id);
+    }
+    
 }

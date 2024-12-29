@@ -9,4 +9,6 @@ public interface CompraService {
     public CompraDTO createCompra(CompraDTO compraDTO) throws Exception;
 
     public List<CompraDTO> getCompraForCliente(Integer id) throws Exception;
+
+    public List<CompraDTO> getAllCompras() throws Exception;
 }

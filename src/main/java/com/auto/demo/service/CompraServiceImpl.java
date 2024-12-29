@@ -37,4 +37,16 @@ public class CompraServiceImpl implements CompraService {
             throw new Exception("Error fetching compra: " + e.getMessage());
         }
     }
+
+    @Override
+    public List<CompraDTO> getAllCompras() throws Exception {
+        try {
+            List<Compra> compras = compraRepository.findAll();
+            return compras.stream()
+            .map(compraMapper::toCompraDTO)
+            .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new Exception("Error fetching compra: " + e.getMessage());
+        }
+    }
 }

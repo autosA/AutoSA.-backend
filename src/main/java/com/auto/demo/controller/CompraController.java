@@ -34,6 +34,15 @@ public class CompraController {
         }
     }
 
+    @GetMapping
+    public ResponseEntity<List<CompraDTO>> getAllCompras(){
+        try {
+            return ResponseEntity.ok(compraService.getAllCompras());
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<CompraDTO> createCompra(@RequestBody CompraDTO compraDTO) {
         try {
