@@ -36,6 +36,15 @@ public class AutoController {
         }
     }
 
+    @GetMapping("/{autoId}")
+    public ResponseEntity<AutoAdminDTO> getAutoById(@PathVariable("autoId") Integer id) {
+        try {
+            return ResponseEntity.ok(autoService.getAutoById(id));
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping
     public ResponseEntity<List<AutoClienteDTO>> getAllAutos() {
         try {
@@ -55,7 +64,7 @@ public class AutoController {
     }
 
     @DeleteMapping("/{autoId}")
-    public ResponseEntity<Void> deleteAuto(@PathVariable("autoId") Integer id){
+    public ResponseEntity<Void> deleteAuto(@PathVariable("autoId") Integer id) {
         try {
             autoService.deleteAuto(id);
             return ResponseEntity.ok().build();

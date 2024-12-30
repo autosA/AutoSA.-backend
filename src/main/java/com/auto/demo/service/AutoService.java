@@ -7,16 +7,13 @@ import com.auto.demo.DTO.AutoClienteDTO;
 
 public interface AutoService {
     
-    //administrador
     public List<AutoAdminDTO> getAllAutosForAdmin(Integer id) throws Exception;
 
     public AutoAdminDTO createAuto(AutoAdminDTO autoCreate) throws Exception;
 
     public void deleteAuto(Integer id) throws Exception;
 
-    //clientes
-
     public List<AutoClienteDTO> getAllAutosForCliente() throws Exception;
 
-    
+    public AutoAdminDTO getAutoById(Integer id) throws Exception;
 }

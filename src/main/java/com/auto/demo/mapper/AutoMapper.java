@@ -16,7 +16,7 @@ public class AutoMapper {
 
     private final AdministradorRepository administradorRepository;
 
-    public AutoAdminDTO toAutoAdminDTO(Auto auto) {
+    public static AutoAdminDTO toAutoAdminDTO(Auto auto) {
 
         if (auto == null) {
             return null;
@@ -38,7 +38,7 @@ public class AutoMapper {
         return autoAdminDTO;
     }
 
-    public AutoClienteDTO toAutoClienteDTO(Auto auto) {
+    public static AutoClienteDTO toAutoClienteDTO(Auto auto) {
         if (auto == null) {
             return null;
         }

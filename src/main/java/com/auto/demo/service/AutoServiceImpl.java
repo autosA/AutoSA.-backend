@@ -1,6 +1,7 @@
 package com.auto.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class AutoServiceImpl implements AutoService {
         try {
             List<Auto> autos = autoRepository.findByAdministradorId(id);
             return autos.stream()
-                    .map(autoMapper::toAutoAdminDTO)
+                    .map(AutoMapper::toAutoAdminDTO)
                     .collect(Collectors.toList());
         } catch (Exception e) {
             throw new Exception("Error fetching autos: " + e.getMessage());
@@ -33,10 +34,20 @@ public class AutoServiceImpl implements AutoService {
     }
 
     @Override
+    public AutoAdminDTO getAutoById(Integer id) throws Exception {
+        Optional<Auto> OptionalAuto = autoRepository.findById(id);
+        if (OptionalAuto.isPresent()) {
+            return AutoMapper.toAutoAdminDTO(OptionalAuto.get());
+        } else {
+            throw new Exception("Auto not found with id: " + id);
+        }
+    }
+
+    @Override
     public AutoAdminDTO createAuto(AutoAdminDTO autoCreate) throws Exception {
         Auto auto = autoMapper.toEntity(autoCreate);
         Auto savedAuto = autoRepository.save(auto);
-        return autoMapper.toAutoAdminDTO(savedAuto);
+        return AutoMapper.toAutoAdminDTO(savedAuto);
     }
 
     @Override
@@ -44,8 +55,8 @@ public class AutoServiceImpl implements AutoService {
         try {
             List<Auto> autos = autoRepository.findAll();
             return autos.stream()
-            .map(autoMapper::toAutoClienteDTO)
-            .collect(Collectors.toList());
+                    .map(AutoMapper::toAutoClienteDTO)
+                    .collect(Collectors.toList());
         } catch (Exception e) {
             throw new Exception("Error fetching autos: " + e.getMessage());
         }
@@ -58,5 +69,5 @@ public class AutoServiceImpl implements AutoService {
         }
         autoRepository.deleteById(id);
     }
-    
+
 }
