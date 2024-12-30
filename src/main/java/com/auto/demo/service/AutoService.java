@@ -16,4 +16,6 @@ public interface AutoService {
     public List<AutoClienteDTO> getAllAutosForCliente() throws Exception;
 
     public AutoAdminDTO getAutoById(Integer id) throws Exception;
+
+    public List<AutoAdminDTO> getAutoByCategory(String category) throws  Exception;
 }

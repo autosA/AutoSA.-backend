@@ -36,6 +36,15 @@ public class AutoController {
         }
     }
 
+    @GetMapping("category/{category}")
+    public ResponseEntity<List<AutoAdminDTO>> getAutoByCategory(@PathVariable("category") String category) {
+        try {
+            return ResponseEntity.ok(autoService.getAutoByCategory(category));
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping("/{autoId}")
     public ResponseEntity<AutoAdminDTO> getAutoById(@PathVariable("autoId") Integer id) {
         try {

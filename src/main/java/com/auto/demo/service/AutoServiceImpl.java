@@ -34,6 +34,18 @@ public class AutoServiceImpl implements AutoService {
     }
 
     @Override
+    public List<AutoAdminDTO> getAutoByCategory(String category) throws Exception {
+        try {
+            List<Auto> autos = autoRepository.findByCategory(category);
+            return autos.stream()
+                    .map(AutoMapper::toAutoAdminDTO)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new Exception("Error fetching autos: " + e.getMessage());
+        }
+    }
+
+    @Override
     public AutoAdminDTO getAutoById(Integer id) throws Exception {
         Optional<Auto> OptionalAuto = autoRepository.findById(id);
         if (OptionalAuto.isPresent()) {
