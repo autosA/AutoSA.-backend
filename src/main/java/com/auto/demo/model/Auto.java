@@ -44,7 +44,7 @@ public class Auto {
     @Column(name = "disponibilidad", nullable = false)
     private Boolean available;
 
-    @Column(name = "img", nullable = false, length = 120)
+    @Column(name = "img", nullable = false, length = 2083)
     private String img;
 
     @OneToMany(mappedBy = "auto", cascade = CascadeType.ALL)
